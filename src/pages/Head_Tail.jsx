@@ -1,8 +1,16 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 const Head_Tail = () => {
+
+
+  const [choose,setChoose]=useState("")
+
   return (
-    <div>Head&Tail</div>
+    <div>
+
+
+      ioujgh
+    </div>
   )
 }
 
