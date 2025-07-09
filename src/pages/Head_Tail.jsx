@@ -31,9 +31,9 @@ const Head_Tail = () => {
     } else if (cols[3]?.values?.includes(choose)) {
       console.log("check=======>")
       const updatedItems = [...cols];
-      updatedItems[2] = {
+      updatedItems[3] = {
         ...updatedItems[2],
-        values: [...updatedItems[2].values, choose]
+        values: [...updatedItems[3].values, choose]
       };
 
       setCols(updatedItems);
