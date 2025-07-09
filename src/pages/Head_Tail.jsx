@@ -20,18 +20,20 @@ const Head_Tail = () => {
     console.log("cloned array ==>", clonedArray)
 
 
-
+    ////////////////////////////////////////// el.type === "H"
     let index = clonedArray.findIndex((el) => el.type === choose);
-    console.log("index ==>", index)
+    console.log("index ==>", index) // will get 0 if i add "H" again
 
     if (index === -1) {
-      //{ [type:"H",values:["H"]] } : 
       clonedArray.push({ type: choose, values: [choose] });
+      //clonedArray=[   {  [type:"H",values:["H"]] }   ]: pushing object : index 0 now!
+
     } else {
+      //{ [type:"H",values:["H","H"]] } : update on the same index if  "H" was added before
       clonedArray[index].values.push(choose);
     }
 
-    setCols(clonedArray);
+    setCols(clonedArray);//updating the final array to reflect in ui
   
 
   }
@@ -65,16 +67,25 @@ const Head_Tail = () => {
       <div>
         <p>Display :</p>
 
-        <div style={{ background: "grey" }}>
-          <div style={{ display: "flex", gap: "20px", marginTop: "20px" }}>
-            {cols.map((col, index) => (
-              <div key={index}>
-                {col.values.map((val, i) => (
-                  <div key={i}>{val}</div>
+        {/* box  */}
+        <div style={{ background: "grey", padding: 4, borderRadius: 5 }}>
+
+          <div style={{ display: "flex", gap: 3, background: "" }}>
+
+            {cols?.map(el => (
+
+              <div>
+                {el.values?.map(ele => (
+                  <div style={{ color: "white" }} >{ele}</div>
                 ))}
               </div>
-            ))}
+
+            ))
+            }
+
           </div>
+
+
         </div>
 
 
