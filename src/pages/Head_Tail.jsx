@@ -10,7 +10,7 @@ const Head_Tail = () => {
 
   const submit = () => {
     if (!choose) {
-      toast.error("select something!")
+      toast.error("select something from the dropdown!")
       return
     }
     console.log("choosed ==>", choose)
@@ -28,13 +28,33 @@ const Head_Tail = () => {
       clonedArray.push({ type: choose, values: [choose] });
       //clonedArray=[   {  [type:"H",values:["H"]] }   ]: pushing object : index 0 now!
 
-    } else {
+    } else if (cols[3]?.values?.includes(choose)) {
+      console.log("check=======>")
+      const updatedItems = [...cols];
+      updatedItems[2] = {
+        ...updatedItems[2],
+        values: [...updatedItems[2].values, choose]
+      };
+
+      setCols(updatedItems);
+      return
+
+
+
+    }
+
+    else if (!cols[cols.length - 1].values.includes(choose)) {
+      console.log("called........................")
+      clonedArray.push({ type: choose, values: [choose] });
+    }
+    else {
       //{ [type:"H",values:["H","H"]] } : update on the same index if  "H" was added before
+      console.log(cols[cols.length - 1].values.includes(choose))
       clonedArray[index].values.push(choose);
     }
 
     setCols(clonedArray);//updating the final array to reflect in ui
-  
+
 
   }
 
@@ -68,16 +88,22 @@ const Head_Tail = () => {
         <p>Display :</p>
 
         {/* box  */}
-        <div style={{ background: "grey", padding: 4, borderRadius: 5 }}>
+        {cols?.length > 0 && <div style={{ background: "black", padding: 4, borderRadius: 5 }}>
 
-          <div style={{ display: "flex", gap: 3, background: "" }}>
+          <div style={{ display: "flex", gap: 3, background: "white", padding: 2 }}>
 
-            {cols?.map(el => (
+            {cols?.map((el, index) => (
 
-              <div>
-                {el.values?.map(ele => (
-                  <div style={{ color: "white" }} >{ele}</div>
-                ))}
+              // this div(green) will go flex
+              <div key={index} style={{ background: "green", padding: 3 }}>
+
+                {el.values?.map((ele, index) => (
+                  <div key={index} style={{ color: "white", background: "red", padding: 1, margin: 1, borderRadius: 3 }} >{ele}</div>
+                  // H T
+                  // H
+                  // new el and again green div...
+                ))
+                }
               </div>
 
             ))
@@ -86,7 +112,8 @@ const Head_Tail = () => {
           </div>
 
 
-        </div>
+        </div>}
+        {/* box */}
 
 
       </div>
