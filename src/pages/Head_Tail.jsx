@@ -4,12 +4,20 @@ const Head_Tail = () => {
 
 
   const [choose,setChoose]=useState("")
+  const [cols,setCols]=useState([])
+
+
+  const submit=()=>{
+
+  }
 
   return (
     <div>
 
 
-      ioujgh
+      <div>
+        <button onClick={()=>submit()}>Submit</button>
+      </div>
     </div>
   )
 }
