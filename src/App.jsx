@@ -1,6 +1,9 @@
 import { useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css'
+import Home from './pages/Home'
+import About from './pages/About'
+import Head_Tail from './pages/Head_Tail'
 
 function App() {
 
@@ -11,7 +14,11 @@ function App() {
       <BrowserRouter>
 
         <Routes>
-          <Route />
+          <Route path='/' element={<Home/>} />
+          <Route path='/about' element={<About/>} />
+          <Route path='/head_tail' element={<Head_Tail/>} />
+
+
         </Routes>
 
 
